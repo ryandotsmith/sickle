@@ -2,7 +2,9 @@ GEM
   remote: http://rubygems.org/
   specs:
     json (1.5.1)
+    pg (0.11.0)
     rack (1.2.2)
+    sequel (3.23.0)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
@@ -13,4 +15,6 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  pg
+  sequel
   sinatra
