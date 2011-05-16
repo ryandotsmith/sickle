@@ -26,14 +26,24 @@ module Sickle
       "queue_#{self.id}"
     end
 
+    def url
+      "https://" + account.username + ":" + account.password + "@" +  QMAN_HOST
+    end
+
+    def account
+      @account ||= Account[account_id]
+    end
+
   end
 
   class Account < Sequel::Model
 
     def after_create
       super
-      queue = Queue.create(:name => "default_queue", :url => "https://ryan:pass@sickle.heroku.com")
+      queue = Queue.create(:name => "default_queue")
       self.default_queue_id = queue.id
+      self.username = "user"
+      self.password = "pass"
       self.save
     end
 

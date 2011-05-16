@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 
+QC::Database.database = ENV["QUEUE_DB"]
 DB = Sequel.connect(ENV["DATABASE_URL"])
 
 unless DB.table_exists? :accounts
