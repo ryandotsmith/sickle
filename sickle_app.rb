@@ -13,6 +13,19 @@ end
 
 module Sickle
   class Queue < Sequel::Model
+
+    def after_create
+      create_backend_queue
+    end
+
+    def create_backend_queue
+      QC::Database.create_queue(unique_queue_name)
+    end
+
+    def unique_queue_name
+      "queue_#{self.id}"
+    end
+
   end
 
   class Account < Sequel::Model
@@ -27,6 +40,7 @@ module Sickle
     def default_queue
       Queue[default_queue_id]
     end
+
   end
 
 end
