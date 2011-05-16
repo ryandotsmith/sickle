@@ -13,6 +13,7 @@ end
 
 module Sickle
   class Queue < Sequel::Model
+    QMAN_HOST = "qman.heroku.com"
 
     def after_create
       create_backend_queue
@@ -40,7 +41,7 @@ module Sickle
 
     def after_create
       super
-      queue = Queue.create(:name => "default_queue")
+      queue = Queue.create(:name => "default_queue", :account_id => self.id)
       self.default_queue_id = queue.id
       self.username = "user"
       self.password = "pass"
