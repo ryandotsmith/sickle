@@ -1,0 +1,10 @@
+{
+  "id": "sickle",
+  "api": {
+    "config_vars": [ "SICKLE_URL" ],
+    "password": "jHTbTrJtBry8WZIl",
+    "sso_salt": "wTNwXqgVPjoKm9TI",
+    "production": "https://yourapp.com/",
+    "test": "http://localhost:4567/"
+  }
+}
